@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Skyfall 2048</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="ui-overlay" style="display:none;">
+            <div id="score-display">
+                <span class="label">SCORE</span>
+                <span id="score-value">0</span>
+            </div>
+            <div id="best-score-display">
+                <span class="label">MY BEST</span>
+                <span id="best-value">0</span>
+            </div>
+        </div>
+
+        <button id="ranking-toggle" style="display:none;">RANK</button>
+        <div id="settings-toggle" style="display:none;" onclick="document.getElementById('settings-panel').classList.toggle('open')">⚙</div>
+
+        <div id="settings-panel">
+            <h3>설정</h3>
+            <label>
+                <input type="checkbox" id="toggle-ghost" checked>
+                하늘 고스트 블록
+            </label>
+            <label>
+                <input type="checkbox" id="toggle-shadow" checked>
+                바닥 그림자 마커
+            </label>
+            <label>
+                <input type="checkbox" id="toggle-sound" checked>
+                효과음
+            </label>
+            <label>
+                <input type="checkbox" id="toggle-bgm" checked>
+                배경음악
+            </label>
+            <button id="restart-game" class="settings-btn">🔄 다시하기</button>
+        </div>
+
+        <div id="ranking-panel">
+            <div id="ranking-header">
+                <h3>RANKING</h3>
+                <span id="ranking-close">✕</span>
+            </div>
+            <div id="ranking-my">
+                <div class="ranking-my-label">내 순위</div>
+                <div id="ranking-my-info">로딩 중...</div>
+            </div>
+            <div class="ranking-row ranking-table-header">
+                <span class="ranking-rank">#</span>
+                <span class="ranking-name">이름</span>
+                <span class="ranking-score">점수</span>
+                <span class="ranking-block">최고블록</span>
+            </div>
+            <div id="ranking-list">
+                <div class="ranking-loading">로딩 중...</div>
+            </div>
+        </div>
+
+        <div id="camera-controls" style="display:none;">
+            <button id="camera-toggle">🔄 시점 이동</button>
+            <button id="camera-reset">↩ 시점 초기화</button>
+        </div>
+
+        <div id="start-screen">
+            <h1 class="start-title">SKYFALL 2048</h1>
+            <div class="start-buttons">
+                <button id="start-new-btn" class="start-btn">처음부터</button>
+                <button id="start-continue-btn" class="start-btn start-btn-continue" disabled>이어하기</button>
+            </div>
+        </div>
+
+        <div id="game-over" style="display:none;">
+            <div id="game-over-content">
+                <h2>EXTINCTION</h2>
+                <p>최종 점수</p>
+                <span id="final-score">0</span>
+                <button id="restart-btn" onclick="location.reload()">다시 시작</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
